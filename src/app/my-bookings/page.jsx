@@ -1,3 +1,14 @@
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
+import BookingCard from "@/components/shared/BookingCard";
+
+const MyBookingsPage = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`, {
+    cache: "no-store",
+  });
+
+  const filterData = await res.json();
+
 return (
     <div className="bg-[#f8f9fa] min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -24,3 +35,6 @@ return (
       </div>
     </div>
   );
+};
+
+export default MyBookingsPage;

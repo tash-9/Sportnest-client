@@ -1,3 +1,26 @@
+import ManageFacilites from "@/components/shared/ManageFacilites";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
+
+const ManageFacility = async () => {
+  const token = await auth.api.getToken({
+    headers: await headers()
+  })
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/manage-my-facilities`, {
+    headers: {
+      authorization: `Bearer ${token.token}`
+    }
+  })
+  const data = await res.json();
+  const session = await auth.api.getSession({
+    headers: await headers() 
+  })
+  const user = session?.user
+  const filterData = data.filter(item => item.owner_email === user.email)
+
 return (
     <div className="bg-[#f8f9fa] min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -24,3 +47,6 @@ return (
       </div>
     </div>
   );
+};
+
+export default ManageMyFacilitiesPage;

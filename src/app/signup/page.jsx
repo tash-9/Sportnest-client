@@ -1,3 +1,47 @@
+"use client";
+
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { Form, TextField, Label, Input, FieldError } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+const SignupPage = () => {
+  const router = useRouter();
+
+  const signIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const image = formData.get("image");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    const { error } = await authClient.signUp.email({
+      name,
+      image,
+      email,
+      password,
+    });
+
+    if (error) {
+      toast.error(error.message || "Signup failed");
+      return;
+    }
+
+    toast.success("Signup successful");
+    router.push("/login");
+  };
+
 return (
     <div className="min-h-[calc(100vh-64px)] bg-[#f8f9fa] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
@@ -60,3 +104,6 @@ return (
       </div>
     </div>
   );
+};
+
+export default LoginPage;

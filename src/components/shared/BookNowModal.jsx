@@ -17,7 +17,6 @@ const BookNowModal = ({ data }) => {
   const { _id, price_per_hour, name, image, available_slots } = data;
   const totalPrice = price_per_hour * hours;
 
-  // Unauthenticated users → redirect to login instead of opening modal
   if (!user) {
     return (
       <Link href="/login">
@@ -32,7 +31,6 @@ const BookNowModal = ({ data }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // Token fetched inside onSubmit — NOT at component level
     const { data: tokenData } = await authClient.token();
 
     const formData = new FormData(e.currentTarget);

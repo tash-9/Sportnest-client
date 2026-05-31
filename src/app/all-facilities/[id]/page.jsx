@@ -1,3 +1,26 @@
+import Image from "next/image";
+import { CiLocationOn } from "react-icons/ci";
+import BookNowModal from "@/components/shared/BookNowModal";
+import { authClient } from "@/lib/auth-client";
+
+const FacilityDetailsPage = async ({ params }) => {
+  const { id } = await params;
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities/${id}`, {
+    cache: "no-store",
+  });
+
+  const data = await res.json();
+
+  const {
+    image, name,
+    facility_type,
+    location,
+    price_per_hour,
+    capacity, available_slots,
+    booking_count, description,
+  } = data;
+
 return (
     <div className="bg-[#f8f9fa] min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -40,3 +63,6 @@ return (
       </div>
     </div>
   );
+};
+
+export default FacilityDetailsPage;
