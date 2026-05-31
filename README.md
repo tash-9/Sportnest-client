@@ -1,6 +1,4 @@
 # SportNest Client
-
-## Project Name
 SportNest - Sports Facility Booking Management System (Client)
 
 ## Purpose
