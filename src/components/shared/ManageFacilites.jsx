@@ -5,7 +5,7 @@ import { MdSportsVolleyball } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import { BiTime } from "react-icons/bi";
 
-const ManageFacilites = ({ item }) => {
+const ManageFacility = ({ item }) => {
   const { image, price_per_hour, location, facility_type, available_slots, name } = item;
 
   return (
@@ -43,4 +43,4 @@ const ManageFacilites = ({ item }) => {
   );
 };
 
-export default ManageFacilites;
+export default ManageFacility;

@@ -49,4 +49,4 @@ return (
   );
 };
 
-export default ManageMyFacilitiesPage;
+export default ManageFacility;

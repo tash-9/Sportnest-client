@@ -106,4 +106,4 @@ return (
   );
 };
 
-export default LoginPage;
+export default SignupPage;

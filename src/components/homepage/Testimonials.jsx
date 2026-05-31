@@ -2,11 +2,19 @@ import { Avatar } from "@heroui/react";
 import Marquee from "react-fast-marquee";
 
 const testimonials = [
-  { text: "Super smooth booking experience. Found my turf in minutes.", name: "Oliver Smith", sport: "Football", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3" },
-  { text: "Found a turf within minutes. Will never go back to calling ahead.", name: "James Carter", sport: "Cricket", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=12" },
-  { text: "Booking courts feels effortless now. The UI is so clean.", name: "Ethan Walker", sport: "Badminton", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=10" },
-  { text: "Real-time availability is a game changer for weekend plans.", name: "William Johnson", sport: "Tennis", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=7" },
-  { text: "Finally a proper sports booking platform in this city.", name: "Noah Thompson", sport: "Futsal", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8" },
+  { text: "Booking a football turf took less than two minutes. Very smooth experience.", name: "Rafi Ahmed", sport: "Football", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=21" },
+  { text: "I could check available slots instantly instead of calling different venues.", name: "Tanvir Hasan", sport: "Cricket", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=22" },
+  { text: "The booking process is simple, clean, and perfect for regular players.", name: "Nusrat Jahan", sport: "Badminton", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=23" },
+  { text: "Managing weekend tennis plans became much easier with SportNest.", name: "Sami Rahman", sport: "Tennis", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=24" },
+  { text: "A helpful platform for finding nearby sports facilities without hassle.", name: "Mehedi Islam", sport: "Cricket", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=25" },
+  { text: "SportNest made it easy to book a football turf without calling anyone.", name: "Arif Hossain", sport: "Football", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=31" },
+  { text: "I found an available cricket slot quickly and confirmed my booking in minutes.", name: "Sakib Rahman", sport: "Cricket", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=32" },
+  { text: "The platform feels simple, fast, and very useful for regular badminton players.", name: "Maliha Karim", sport: "Badminton", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=33" },
+  { text: "Checking price, location, and slots in one place saved me a lot of time.", name: "Nayeem Hasan", sport: "Tennis", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=34" },
+  { text: "I like how clean the facility cards are. Booking feels very straightforward.", name: "Farhana Akter", sport: "Futsal", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=35" },
+  { text: "As a facility owner, managing my listed courts is much easier now.", name: "Imran Chowdhury", sport: "Facility Owner", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=36" },
+  { text: "Perfect for weekend plans. I can see available time slots before booking.", name: "Tanjim Ahmed", sport: "Basketball", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=37" },
+  { text: "The booking and cancellation system is simple enough for anyone to use.", name: "Nabila Islam", sport: "Swimming", image: "https://img.heroui.chat/image/avatar?w=400&h=400&u=38" },
 ];
 
 const Testimonials = () => {

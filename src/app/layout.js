@@ -7,6 +7,9 @@ import { Toaster } from "react-hot-toast";
 export const metadata = {
   title: "SportNest",
   description: "Book your favourite sports venues instantly",
+  icons: {
+    icon: "/vercel.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
