@@ -5,10 +5,10 @@ import FacilityCard from "@/components/shared/FacilityCard";
 import Search from "@/components/shared/Search";
 import CategoryDropdown from "@/components/shared/SortBy";
 
-export default function FacilitiesClient() {
-  const [facilities, setFacilities] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+export default function FacilitiesClient({ initialFacilities = [], initialSearch = "", initialCategory = "" }) {
+  const [facilities, setFacilities] = useState(initialFacilities);
+  const [searchText, setSearchText] = useState(initialSearch);
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
   const fetchFacilities = async (search = "", category = "") => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities?search=${search}&category=${category}`)
@@ -16,9 +16,6 @@ export default function FacilitiesClient() {
     setFacilities(data);
   };
 
-  useEffect(() => {
-    fetchFacilities();
-  }, []);
 
 return (
     <div className="bg-[#f8f9fa] min-h-screen py-10">

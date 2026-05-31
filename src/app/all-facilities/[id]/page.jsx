@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CiLocationOn } from "react-icons/ci";
 import BookNowModal from "@/components/shared/BookNowModal";
-import { authClient } from "@/lib/auth-client";
+//import { authClient } from "@/lib/auth-client";
 
 const FacilityDetailsPage = async ({ params }) => {
   const { id } = await params;
