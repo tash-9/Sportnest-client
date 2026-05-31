@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CiLocationOn } from "react-icons/ci";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { MdSportsVolleyball } from "react-icons/md";
+//import { MdSportsVolleyball } from "react-icons/md";
 
 const FacilityCard = ({ facility }) => {
   const { image, price_per_hour, location, facility_type, name, _id } = facility;
