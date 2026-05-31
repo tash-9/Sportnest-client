@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@heroui/styles"; 
+
+:root {
+  --color-bg-primary: #f4f6f4;
+  --color-bg-card: #ffffff;
+  --color-border: #d1d9d1;
+  --color-accent: #3d6b4f;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+}
