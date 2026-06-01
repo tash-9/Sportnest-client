@@ -29,7 +29,7 @@ Client Live URL: https://sportnest-client-sage.vercel.app
 - User login with email and password
 - Google login using Better Auth
 - Private routes for logged-in users
-- Add facility page with image upload through imgbb
+- Add facility page with image upload 
 - Manage my facilities page
 - Edit and delete own facilities
 - My bookings page
@@ -73,7 +73,6 @@ Client Live URL: https://sportnest-client-sage.vercel.app
 - `lucide-react`
 - `mongodb`
 - `react-countup`
-- `react-dom`
 - `react-fast-marquee`
 - `react-slick`
 - `slick-carousel`
