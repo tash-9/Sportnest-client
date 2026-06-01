@@ -55,7 +55,7 @@ const BookNowModal = ({ data }) => {
   if (!user) {
     return (
       <Link href="/login">
-        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
+        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
           <MdOutlineBookmarkAdd /> Book Now
         </button>
       </Link>
@@ -124,7 +124,7 @@ const BookNowModal = ({ data }) => {
   return (
     <Modal>
       <Modal.Trigger>
-        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
+        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
           <MdOutlineBookmarkAdd /> Book Now
         </button>
       </Modal.Trigger>

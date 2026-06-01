@@ -50,7 +50,7 @@ const FacilityCard = ({ facility }) => {
 
           <Link
             href={`/all-facilities/${_id}`}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-[#1a1f2e] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#2d6a4f]"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-[#2d6a4f] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a1f2e]"
           >
             Book Now
             <FaArrowRightLong className="text-xs transition-transform group-hover:translate-x-0.5" />

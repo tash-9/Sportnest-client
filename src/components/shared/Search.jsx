@@ -11,25 +11,25 @@ const SearchBox = ({ value, onChange, onSubmit, loading = false }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full flex-col gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:flex-row sm:items-center"
+      className="flex h-11 w-full items-center rounded-xl border border-gray-200 bg-white p-1 shadow-sm sm:h-12"
     >
       <div className="flex min-w-0 flex-1 items-center gap-2 px-3">
-        <Search size={20} className="shrink-0 text-[#2d6a4f]" />
+        <Search size={18} className="shrink-0 text-[#2d6a4f]" />
 
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="Search by name, location, or sport..."
-          className="min-w-0 flex-1 bg-transparent py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400"
+          placeholder="Search..."
+          className="min-w-0 flex-1 bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-xl bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#40916c] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className="h-9 shrink-0 rounded-lg bg-[#2d6a4f] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#1a1f2e] disabled:cursor-not-allowed disabled:opacity-70 sm:h-10"
       >
-        {loading ? "Searching..." : "Search"}
+        {loading ? "..." : "Search"}
       </button>
     </form>
   );

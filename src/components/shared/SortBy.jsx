@@ -16,11 +16,13 @@ const CategoryDropdown = ({ value = "", onChange }) => {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="h-full min-h-14 w-full rounded-2xl border border-gray-200 bg-[#1a1f2e] px-4 py-3 text-sm font-semibold text-white shadow-sm outline-none transition focus:ring-2 focus:ring-[#2d6a4f]"
+      className="h-11 w-full cursor-pointer rounded-xl border border-gray-200 bg-[#2d6a4f] px-4 text-sm font-semibold text-white shadow-sm outline-none transition-colors hover:bg-[#1a1f2e] focus:bg-[#1a1f2e] focus:ring-2 focus:ring-[#2d6a4f]/30 sm:h-12"
     >
-      <option value="">All Categories</option>
+      <option className="bg-white text-[#1a1f2e]" value="">
+        All Categories
+      </option>
       {categories.map((category) => (
-        <option key={category} value={category}>
+        <option className="bg-white text-[#1a1f2e]" key={category} value={category}>
           {category}
         </option>
       ))}
