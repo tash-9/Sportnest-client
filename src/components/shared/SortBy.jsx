@@ -1,21 +1,29 @@
 "use client";
 
-const CategoryDropdown = ({ onChange }) => {
+const categories = [
+  "Football",
+  "Cricket",
+  "Badminton",
+  "Tennis",
+  "Swimming",
+  "Basketball",
+  "Volleyball",
+  "Other",
+];
+
+const CategoryDropdown = ({ value = "", onChange }) => {
   return (
     <select
+      value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="px-4 py-3 bg-[#1a1f2e] text-white rounded-xl outline-none"
-      defaultValue=""
+      className="h-full min-h-14 w-full rounded-2xl border border-gray-200 bg-[#1a1f2e] px-4 py-3 text-sm font-semibold text-white shadow-sm outline-none transition focus:ring-2 focus:ring-[#2d6a4f]"
     >
       <option value="">All Categories</option>
-      <option value="Football">Football</option>
-      <option value="Cricket">Cricket</option>
-      <option value="Badminton">Badminton</option>
-      <option value="Tennis">Tennis</option>
-      <option value="Swimming">Swimming</option>
-      <option value="Basketball">Basketball</option>
-      <option value="Volleyball">Volleyball</option>
-      <option value="Other">Other</option>
+      {categories.map((category) => (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      ))}
     </select>
   );
 };

@@ -1,48 +1,182 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import FacilityCard from "@/components/shared/FacilityCard";
-import Search from "@/components/shared/Search";
+import SearchBox from "@/components/shared/Search";
 import CategoryDropdown from "@/components/shared/SortBy";
 
-export default function FacilitiesClient({ initialFacilities = [], initialSearch = "", initialCategory = "" }) {
-  const [facilities, setFacilities] = useState(initialFacilities);
+export default function FacilitiesClient({
+  initialSearch = "",
+  initialCategory = "",
+}) {
+  const router = useRouter();
+  const [facilities, setFacilities] = useState([]);
   const [searchText, setSearchText] = useState(initialSearch);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const fetchFacilities = async (search = "", category = "") => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}`)
-    const data = await res.json();
-    setFacilities(data);
+  const updateBrowserUrl = useCallback(
+    (search, category) => {
+      const params = new URLSearchParams();
+
+      if (search.trim()) params.set("search", search.trim());
+      if (category) params.set("category", category);
+
+      const queryString = params.toString();
+      router.replace(
+        queryString ? `/all-facilities?${queryString}` : "/all-facilities",
+        { scroll: false }
+      );
+    },
+    [router]
+  );
+
+  const getFacilitiesUrl = useCallback((search, category) => {
+    const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+
+    if (!baseUrl) {
+      throw new Error(
+        "NEXT_PUBLIC_SERVER_URL is missing. Add your backend URL in Vercel Environment Variables."
+      );
+    }
+
+    const url = new URL("/all-facilities", baseUrl);
+
+    if (search.trim()) url.searchParams.set("search", search.trim());
+    if (category) url.searchParams.set("category", category);
+
+    return url.toString();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadFacilities = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const res = await fetch(getFacilitiesUrl(searchText, selectedCategory), {
+          signal: controller.signal,
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data?.message || "Failed to load facilities");
+        }
+
+        setFacilities(Array.isArray(data) ? data : []);
+        updateBrowserUrl(searchText, selectedCategory);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          setFacilities([]);
+          setError(err.message || "Something went wrong while loading facilities.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    const timer = setTimeout(loadFacilities, 350);
+
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [getFacilitiesUrl, searchText, selectedCategory, updateBrowserUrl]);
+
+  const handleClearFilters = () => {
+    setSearchText("");
+    setSelectedCategory("");
   };
 
-
-return (
-    <div className="bg-[#f8f9fa] min-h-screen py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="mb-8">
-          <h1 className="text-4xl font-extrabold text-[#1a1f2e]">All Facilities</h1>
-          <p className="text-gray-500 mt-1 text-sm">Find and book your perfect sports venue</p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 mb-6">
-          <div className="flex-1">
-            <Search onSearch={(text) => { setSearchText(text); fetchFacilities(text, selectedCategory); }} />
+  return (
+    <section className="min-h-screen bg-[#f8f9fa] py-8 sm:py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-extrabold text-[#1a1f2e] sm:text-4xl">
+              All Facilities
+            </h1>
+            <p className="mt-1 text-sm text-gray-500">
+              Find and book your perfect sports venue
+            </p>
           </div>
-          <CategoryDropdown onChange={(value) => { setSelectedCategory(value); fetchFacilities(searchText, value); }} />
+
+          {(searchText || selectedCategory) && (
+            <button
+              type="button"
+              onClick={handleClearFilters}
+              className="w-fit rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600 transition hover:border-[#2d6a4f] hover:text-[#2d6a4f]"
+            >
+              Clear filters
+            </button>
+          )}
         </div>
 
-        {facilities.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {facilities.map((f) => <FacilityCard key={f._id} facility={f} />)}
+        <div className="mb-6 grid grid-cols-1 gap-3 md:grid-cols-[1fr_260px]">
+          <SearchBox
+            value={searchText}
+            onChange={setSearchText}
+            onSubmit={() => setSearchText(searchText.trim())}
+            loading={loading}
+          />
+
+          <CategoryDropdown
+            value={selectedCategory}
+            onChange={setSelectedCategory}
+          />
+        </div>
+
+        <div className="mb-5 flex flex-col gap-1 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            {loading
+              ? "Loading facilities..."
+              : `${facilities.length} facilit${facilities.length === 1 ? "y" : "ies"} found`}
+          </p>
+
+          {(searchText || selectedCategory) && (
+            <p className="text-gray-400">
+              {searchText && <span>Search: “{searchText}”</span>}
+              {searchText && selectedCategory && <span> • </span>}
+              {selectedCategory && <span>Category: {selectedCategory}</span>}
+            </p>
+          )}
+        </div>
+
+        {error && (
+          <div className="mb-6 rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {error}
+          </div>
+        )}
+
+        {loading ? (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {[...Array(8)].map((_, index) => (
+              <div
+                key={index}
+                className="h-80 animate-pulse rounded-2xl border border-gray-100 bg-white"
+              />
+            ))}
+          </div>
+        ) : facilities.length > 0 ? (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {facilities.map((facility) => (
+              <FacilityCard key={facility._id} facility={facility} />
+            ))}
           </div>
         ) : (
-          <div className="text-center py-20 text-gray-400">
-            <p className="text-lg font-semibold">No facilities found</p>
-            <p className="text-sm mt-1">Try a different search or category</p>
+          <div className="rounded-3xl border border-dashed border-gray-200 bg-white py-20 text-center text-gray-400">
+            <p className="text-lg font-semibold text-gray-500">No facilities found</p>
+            <p className="mt-1 text-sm">Try a different search or category.</p>
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

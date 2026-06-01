@@ -1,34 +1,37 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { useState } from "react";
 
-const SearchBox = ({ onSearch }) => {
-  const [searchText, setSearchText] = useState("");
-
-  const handleSearch = () => {
-    onSearch(searchText.trim());
+const SearchBox = ({ value, onChange, onSubmit, loading = false }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit?.();
   };
 
   return (
-    <div className="flex items-center gap-2 w-full bg-[#fcfcfc] border border-gray-200 rounded-2xl px-4 py-2 shadow-sm">
-      <Search size={20} className="text-green-500" />
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full flex-col gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:flex-row sm:items-center"
+    >
+      <div className="flex min-w-0 flex-1 items-center gap-2 px-3">
+        <Search size={20} className="shrink-0 text-[#2d6a4f]" />
 
-      <input
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-        placeholder="Search facilities..."
-        className="flex-1 px-2 py-2 bg-transparent outline-none text-gray-700"
-      />
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Search by name, location, or sport..."
+          className="min-w-0 flex-1 bg-transparent py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400"
+        />
+      </div>
 
       <button
-        onClick={handleSearch}
-        className="bg-green-300 hover:bg-green-400 text-green-950 px-5 py-2 rounded-xl font-semibold"
+        type="submit"
+        disabled={loading}
+        className="w-full rounded-xl bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#40916c] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
-        Search
+        {loading ? "Searching..." : "Search"}
       </button>
-    </div>
+    </form>
   );
 };
 
