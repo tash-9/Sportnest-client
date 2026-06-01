@@ -55,7 +55,7 @@ const BookNowModal = ({ data }) => {
   if (!user) {
     return (
       <Link href="/login">
-        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
+        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors">
           <MdOutlineBookmarkAdd /> Book Now
         </button>
       </Link>
@@ -124,7 +124,7 @@ const BookNowModal = ({ data }) => {
   return (
     <Modal>
       <Modal.Trigger>
-        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#40916c]">
+        <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#2d6a4f] hover:bg-[#1a1f2e] px-5 py-3 font-semibold text-white transition-colors">
           <MdOutlineBookmarkAdd /> Book Now
         </button>
       </Modal.Trigger>
@@ -197,7 +197,7 @@ const BookNowModal = ({ data }) => {
                 <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 sm:p-5">
                   <p className="text-sm sm:text-base text-gray-500">Total Price</p>
                   <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-green-600">
-                    ${totalPrice}
+                    Tk.{totalPrice}
                   </h2>
                 </div>
 

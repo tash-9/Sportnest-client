@@ -125,7 +125,7 @@ const EditModal = ({ data }) => {
                           required
                           type="number"
                           name="price_per_hour"
-                          placeholder="$50"
+                          placeholder="Tk.50"
                           className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
                       </div>

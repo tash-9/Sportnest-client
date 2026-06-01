@@ -44,7 +44,7 @@ const FacilityCard = ({ facility }) => {
 
         <div className="flex items-center justify-between gap-3 border-t border-gray-50 pt-2">
           <span className="text-lg font-bold text-[#2d6a4f]">
-            ${price_per_hour}
+            Tk.{price_per_hour}
             <span className="text-xs font-normal text-gray-400">/hr</span>
           </span>
 

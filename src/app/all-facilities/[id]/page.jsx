@@ -40,7 +40,7 @@ return (
 
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "Price", value: `$${price_per_hour}/hr` },
+                { label: "Price", value: `Tk.${price_per_hour}/hr` },
                 { label: "Capacity", value: capacity },
                 { label: "Available Slots", value: available_slots },
                 { label: "Total Bookings", value: booking_count },

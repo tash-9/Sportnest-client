@@ -36,7 +36,7 @@ const ManageFacility = ({ item }) => {
         </div>
 
         <div className="pt-3 border-t border-gray-50">
-          <span className="text-[#2d6a4f] font-bold text-xl">${price_per_hour}<span className="text-gray-400 text-xs font-normal">/hr</span></span>
+          <span className="text-[#2d6a4f] font-bold text-xl">Tk.{price_per_hour}<span className="text-gray-400 text-xs font-normal">/hr</span></span>
         </div>
       </div>
     </div>

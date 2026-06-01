@@ -45,7 +45,7 @@ const BookingCard = ({ item }) => {
         </div>
 
         <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-          <span className="text-[#2d6a4f] font-bold text-xl">${total_price}</span>
+          <span className="text-[#2d6a4f] font-bold text-xl">Tk.{total_price}</span>
           <BookingDeleteModal data={item} />
         </div>
       </div>
