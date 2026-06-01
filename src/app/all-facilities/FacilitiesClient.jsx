@@ -11,7 +11,7 @@ export default function FacilitiesClient({ initialFacilities = [], initialSearch
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
   const fetchFacilities = async (search = "", category = "") => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities?search=${search}&category=${category}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}`)
     const data = await res.json();
     setFacilities(data);
   };
