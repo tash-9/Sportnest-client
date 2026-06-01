@@ -3,18 +3,21 @@ import { authClient } from "@/lib/auth-client";
 import { Input, Label, Modal, Surface, TextField } from "@heroui/react";
 //import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import Link from "next/link";
 
 const BookNowModal = ({ data }) => {
   const [hours, setHours] = useState(1);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
-  if (isPending) return null;
-
+  if (!mounted || isPending) return null;
   const user = session?.user;
   const { _id, price_per_hour, name, image, available_slots } = data;
   const totalPrice = price_per_hour * hours;
@@ -33,13 +36,24 @@ const BookNowModal = ({ data }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    const form = e.currentTarget;
+
+    if (!(form instanceof HTMLFormElement)) {
+      toast.error("Booking form error. Please try again.");
+      return;
+    }
+
+    const formData = new FormData(form);
+    const formFields = Object.fromEntries(formData.entries());
+
+    const { bookingDate, timeSlot, hours: formHours, facilityName } = formFields;
+    const total_price = price_per_hour * Number(formHours);
     const { data: tokenData } = await authClient.token();
 
-    const formData = new FormData(e.currentTarget);
-    const formFields = Object.fromEntries(formData.entries());
-    const { bookingDate, timeSlot, hours: formHours, facilityName } = formFields;
-    const finalTotalPrice = price_per_hour * Number(formHours);
-
+    if (!tokenData?.token) {
+      toast.error("Authentication failed. Please login again.");
+      return;
+    }
     const bookingData = {
       facility_id: _id,
       facility_name: facilityName,
@@ -47,11 +61,10 @@ const BookNowModal = ({ data }) => {
       booking_date: bookingDate,
       time_slot: timeSlot,
       hours: Number(formHours),
-      image: image,
-      total_price: finalTotalPrice,
+      image,
+      total_price,
       status: "pending",
     };
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`, {
       method: "POST",
       headers: {
@@ -60,15 +73,12 @@ const BookNowModal = ({ data }) => {
       },
       body: JSON.stringify(bookingData),
     });
-
     if (!res.ok) {
       toast.error("Booking failed. Please try again.");
       return;
     }
-
     toast.success("Booking Successful!");
-    // redirect("/all-facilities");
-    router.push("/all-facilities");
+    router.push("/my-bookings");
   };
 
   return (
