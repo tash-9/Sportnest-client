@@ -22,7 +22,6 @@ const BookNowModal = ({ data }) => {
   const { _id, price_per_hour, name, image, available_slots } = data;
   const totalPrice = price_per_hour * hours;
   
-
   if (!user) {
     return (
       <Link href="/login">
@@ -107,7 +106,7 @@ const BookNowModal = ({ data }) => {
                       <Input required type="date" />
                     </TextField>
 
-                    {/* name only on select, removed from TextField wrapper */}
+                    {}
                     <TextField className="w-full">
                       <Label>Time Slot</Label>
                       <select
