@@ -1,5 +1,5 @@
 # SportNest Client
-SportNest - Sports Facility Booking Management System (Client)
+SportNest Client is the frontend application for a sports facility booking management system. It allows users to explore sports venues, register and log in, book facilities, add their own facilities, manage their listed facilities, and view or cancel bookings.
 
 ## Purpose
 The client provides a responsive frontend built with Next.js for users to:
@@ -9,18 +9,51 @@ The client provides a responsive frontend built with Next.js for users to:
 - Handle authentication and authorization via Better Auth
 
 ## Live URL
-https://sportnest-client-sage.vercel.app
+Client Live URL: https://sportnest-client-sage.vercel.app
 
 ## Features
-- User registration and login (email & Google social login)
-- Protected routes for My Bookings, Add Facility, Manage Facilities
-- Featured Facilities and Popular Sports sections
-- Image upload for facilities via imgbb
-- Responsive design for mobile, tablet, and desktop
-- Navbar and Footer components
-- Toast notifications for success and error messages
+
+- Modern responsive sports facility booking website
+- Home page with hero slider
+- Popular sports section
+- Featured facilities loaded from the database
+- Stats section
+- Testimonials section
+- Call-to-action section
+- All facilities page
+- Facility search by text
+- Facility filter by sport category
+- Facility details page
+- Booking modal with booking date, time slot, hours, and total price
+- User registration with email and password
+- User login with email and password
+- Google login using Better Auth
+- Private routes for logged-in users
+- Add facility page with image upload through imgbb
+- Manage my facilities page
+- Edit and delete own facilities
+- My bookings page
+- Cancel booking feature
+- Toast notifications for user feedback
+- Loading pages
 - Custom 404 page
-- Search and filter for facilities
+- Mobile, tablet, and desktop responsive layout
+
+## Technologies Used
+
+- Next.js
+- React
+- Tailwind CSS
+- Better Auth
+- MongoDB adapter for Better Auth
+- HeroUI
+- Framer Motion
+- Swiper
+- Splide Slider
+- React Icons
+- Lucide React
+- React Hot Toast
+- imgbb image upload
 
 ## NPM Packages Used
 - `next`
@@ -31,3 +64,26 @@ https://sportnest-client-sage.vercel.app
 - `react-hot-toast`
 - `react-icons`
 - `framer-motion`
+- `@better-auth/mongo-adapter`
+- `@gravity-ui/icons`
+- `@heroui/styles`
+- `@splidejs/react-splide`
+- `animate.css`
+- `kysely`
+- `lucide-react`
+- `mongodb`
+- `react-countup`
+- `react-dom`
+- `react-fast-marquee`
+- `react-slick`
+- `slick-carousel`
+- `styled-components`
+- `swiper`
+- `@tailwindcss/postcss`
+- `babel-plugin-react-compiler`
+- `eslint`
+- `eslint-config-next`
+- `tailwindcss`
+
+## Developed by
+Tasfia Islam Raisha
