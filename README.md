@@ -85,5 +85,26 @@ Client Live URL: https://sportnest-client-sage.vercel.app
 - `eslint-config-next`
 - `tailwindcss`
 
+## Local Installation and Run
+1. Clone the client repository.
+2. Install dependencies:
+```bash
+npm install
+```
+3. Add the required environment variables in `.env.local`.
+4. Run the development server:
+```bash
+npm run dev
+```
+5. Build for production:
+```bash
+npm run build
+```
+6. Start production build:
+```bash
+npm start
+```
+
+
 ## Developed by
 Tasfia Islam Raisha
