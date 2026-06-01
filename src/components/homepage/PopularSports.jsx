@@ -1,9 +1,9 @@
-import { FaFootballBall, FaBasketballBall, FaTableTennis } from "react-icons/fa";
-import { GiCricketBat, GiShuttlecock, GiTennisRacket } from "react-icons/gi";
+import { FaBasketballBall, FaTableTennis } from "react-icons/fa";
+import { GiSoccerBall , GiCricketBat, GiShuttlecock, GiTennisRacket } from "react-icons/gi";
 import Link from "next/link";
 
 const sports = [
-  { name: "Football", icon: <FaFootballBall />, color: "bg-orange-50 text-orange-500" },
+  { name: "Football", icon: <GiSoccerBall />, color: "bg-orange-50 text-orange-500" },
   { name: "Cricket", icon: <GiCricketBat />, color: "bg-yellow-50 text-yellow-600" },
   { name: "Tennis", icon: <GiTennisRacket />, color: "bg-green-50 text-green-600" },
   { name: "Badminton", icon: <GiShuttlecock />, color: "bg-blue-50 text-blue-500" },
@@ -18,9 +18,9 @@ const PopularSports = () => {
         <div className="text-center mb-14">
           <p className="text-xs font-semibold text-[#2d6a4f] uppercase tracking-widest mb-2">What We Offer</p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a1f2e]">
-            Popular <span className="text-[#2d6a4f]">Sports</span>
+            Popular Sports
           </h2>
-          <p className="text-gray-500 mt-3 text-base">Explore and book venues for your favourite sports.</p>
+          <p className="text-gray-500 mt-3 text-base">Choose your desired venue and book in a few minutes </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

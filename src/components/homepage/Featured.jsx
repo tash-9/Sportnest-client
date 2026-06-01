@@ -15,10 +15,10 @@ const Featured = async () => {
   return (
     <div className="my-20 container mx-auto">
       <h1 className="text-center text-4xl md:text-5xl font-bold">
-        Featured <span className="text-green-800">Facilities</span>
+        Featured Facilities 
       </h1>
       <p className="text-center mt-3 text-xl text-muted">
-        Discover our most popular and highly rated sports facilities
+        Our Most Loved Sports Venues by Players
       </p>
       <div className="mt-10">
         {data.length > 0 ? (

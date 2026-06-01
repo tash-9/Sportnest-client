@@ -23,7 +23,8 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link href="/">
-          <Image src="/assets/logo.png" alt="SportNest" width={140} height={40} className="h-9 w-auto" />
+          <Image src="/assets/logo.png" alt="SportNest" 
+          width={200} height={100} className="h-9 w-auto" />
         </Link>
 
         {/* Desktop links */}

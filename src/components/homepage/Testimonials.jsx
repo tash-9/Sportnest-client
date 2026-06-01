@@ -21,11 +21,11 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <p className="text-xs font-semibold text-[#2d6a4f] uppercase tracking-widest mb-2">Reviews</p>
+        <p className="text-xs font-semibold text-[#000000] uppercase tracking-widest mb-2">TRUSTED BY PLAYERS</p>
         <h2 className="text-4xl font-extrabold text-[#1a1f2e]">
-          What <span className="text-[#2d6a4f]">Players Say</span>
+          <span className="text-[#2d6a4f]">What Players Love About SportNest</span>
         </h2>
-        <p className="text-gray-500 mt-3">Real feedback from SportNest users across the country.</p>
+        <p className="text-gray-500 mt-3">Real stories from players who book faster, play more, and enjoy better venues with SportNest.</p>
       </div>
 
       <Marquee pauseOnHover speed={40} gradient={false}>

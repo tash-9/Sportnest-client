@@ -21,11 +21,11 @@ const CtaSection = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
 
           <h1 className="text-3xl md:text-4xl font-bold">
-            Ready to Play Your Next Match?
+            Ready to Book Your Next Game?
           </h1>
 
           <p className="text-sm md:text-base mt-2 text-gray-200">
-            Book sports venues instantly with SportNest.
+            Find your venue, choose your time, and confirm your booking in minutes.
           </p>
 
           <Link href={'/all-facilities'}>

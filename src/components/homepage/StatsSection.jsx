@@ -4,8 +4,8 @@ import { Users, MapPin, CalendarCheck, Headphones } from "lucide-react";
 
 const stats = [
   { id: 1, title: "Active Players", value: 500, suffix: "+", icon: Users },
-  { id: 2, title: "Sports Venues", value: 120, suffix: "+", icon: MapPin },
-  { id: 3, title: "Bookings Completed", value: 10000, suffix: "+", icon: CalendarCheck },
+  { id: 2, title: "Sports Venues", value: 10, suffix: "+", icon: MapPin },
+  { id: 3, title: "Bookings Completed", value: 2500, suffix: "+", icon: CalendarCheck },
   { id: 4, title: "Customer Support", value: "24/7", suffix: "", icon: Headphones },
 ];
 
@@ -14,11 +14,11 @@ const StatsSection = () => {
     <section className="py-20 bg-[#1a1f2e]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold text-[#40916c] uppercase tracking-widest mb-2">By the Numbers</p>
+          <p className="text-xs font-semibold text-[#40916c] uppercase tracking-widest mb-2">PLATFORM HIGHLIGHTS </p>
           <h2 className="text-4xl font-extrabold text-white">
-            Our Growing <span className="text-[#40916c]">Community</span>
+            SportNest At a Glance
           </h2>
-          <p className="text-gray-400 mt-3">Thousands of players trust SportNest for their daily games.</p>
+          <p className="text-gray-400 mt-3">A quick snapshot of how players, venues, and bookings are growing across SportNest.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
