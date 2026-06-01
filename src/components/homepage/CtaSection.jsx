@@ -10,7 +10,7 @@ const CtaSection = () => {
 
         <Image
           className="w-full h-full object-cover"
-          src={"/assets/Cta.svg"}
+          src={"/assets/cta.svg"}
           alt="CTA Banner"
           width={1200}
           height={400}
