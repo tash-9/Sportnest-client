@@ -35,7 +35,8 @@ const SearchBox = ({ onSearch }) => {
           {/* Input */}
           <SearchField.Input
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            //onChange={(e) => setSearchText(e.target.value)}
+            onChange={(value) => setSearchText(value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             placeholder="Search facilities..."
             className="
