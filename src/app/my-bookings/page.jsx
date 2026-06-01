@@ -1,20 +1,36 @@
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import BookingCard from "@/components/shared/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const MyBookingsPage = async () => {
+ const tokenData = await auth.api.getToken({
+  headers: await headers()
+});
+
+const token = tokenData?.token;
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`, {
     cache: "no-store",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   });
 
-  const filterData = await res.json();
+  let filterData = [];
+  if (res.ok) {
+    filterData = await res.json();
+  }
 
-return (
+  return (
     <div className="bg-[#f8f9fa] min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="mb-8">
           <h1 className="text-4xl font-extrabold text-[#1a1f2e]">My Bookings</h1>
-          <p className="text-gray-500 mt-1 text-sm">{filterData.length} booking{filterData.length !== 1 ? "s" : ""} found</p>
+          <p className="text-gray-500 mt-1 text-sm">
+            {filterData.length} booking{filterData.length !== 1 ? "s" : ""} found
+          </p>
         </div>
 
         {filterData.length ? (

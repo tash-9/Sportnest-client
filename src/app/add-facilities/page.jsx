@@ -1,7 +1,8 @@
 "use client"
 
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+//import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -10,6 +11,7 @@ const AddFacilitiesPage = () => {
   const user = session?.user;
   const [imageUrl, setImageUrl] = useState('');
   const [uploading, setUploading] = useState(false);
+  const router = useRouter();
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -56,6 +58,7 @@ const AddFacilitiesPage = () => {
 
     const { data: tokenData } = await authClient.token();
 
+    try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-facilities`, {
       method: 'POST',
       headers: {
@@ -69,9 +72,12 @@ const AddFacilitiesPage = () => {
       toast.error('Failed to add facility. Please try again.');
       return;
     }
-
     toast.success('New Facility Added Successfully!');
-    redirect('/all-facilities');
+    router.push('/all-facilities');
+  }
+    catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   return (

@@ -38,6 +38,7 @@ const BookNowModal = ({ data }) => {
     const formData = new FormData(e.currentTarget);
     const formFields = Object.fromEntries(formData.entries());
     const { bookingDate, timeSlot, hours: formHours, facilityName } = formFields;
+    const finalTotalPrice = price_per_hour * Number(formHours);
 
     const bookingData = {
       facility_id: _id,
@@ -47,7 +48,7 @@ const BookNowModal = ({ data }) => {
       time_slot: timeSlot,
       hours: Number(formHours),
       image: image,
-      total_price: totalPrice,
+      total_price: finalTotalPrice,
       status: "pending",
     };
 
